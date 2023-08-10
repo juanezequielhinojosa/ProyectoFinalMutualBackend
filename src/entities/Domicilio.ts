@@ -1,4 +1,5 @@
 import {Entity,Column, PrimaryGeneratedColumn,BaseEntity,CreateDateColumn,UpdateDateColumn, OneToOne, JoinColumn, OneToMany} from "typeorm";
+import { Afiliado } from "./Afiliado";
   
   @Entity() 
 
@@ -20,5 +21,8 @@ import {Entity,Column, PrimaryGeneratedColumn,BaseEntity,CreateDateColumn,Update
 
     @Column()
     localidad: string;
+
+    @OneToOne(()=>Afiliado, (afiliado)=>afiliado.domicilio)
+    afiliado: Afiliado;
    
   }

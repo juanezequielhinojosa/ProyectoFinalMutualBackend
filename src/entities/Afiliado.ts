@@ -1,4 +1,6 @@
 import {Entity,Column, PrimaryGeneratedColumn,BaseEntity,CreateDateColumn,UpdateDateColumn, OneToOne, JoinColumn, OneToMany} from "typeorm";
+import { Domicilio } from "./Domicilio";
+import { Usuario } from "./Usuario";
   
   @Entity() 
 
@@ -36,5 +38,11 @@ import {Entity,Column, PrimaryGeneratedColumn,BaseEntity,CreateDateColumn,Update
     @UpdateDateColumn()
     updatedAt: Date;
 
-   
+    @OneToOne(()=>Domicilio)
+    @JoinColumn({name: 'domicilio_id'})
+    domicilio: Domicilio;
+
+    @OneToOne(()=>Usuario)
+    @JoinColumn({name: 'usuario_id'})
+    usuario: Usuario;
   }
