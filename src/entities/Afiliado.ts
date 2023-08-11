@@ -1,6 +1,7 @@
 import {Entity,Column, PrimaryGeneratedColumn,BaseEntity,CreateDateColumn,UpdateDateColumn, OneToOne, JoinColumn, OneToMany} from "typeorm";
 import { Domicilio } from "./Domicilio";
 import { Usuario } from "./Usuario";
+import { Orden } from "./Orden";
   
   @Entity() 
 
@@ -21,7 +22,10 @@ import { Usuario } from "./Usuario";
     fecha_nacimiento: Date;
 
     @Column()
-    telefono: number
+    telefono: number;
+
+    @Column()
+    correo: string;
 
     @Column()
     cuil: number;
@@ -45,4 +49,8 @@ import { Usuario } from "./Usuario";
     @OneToOne(()=>Usuario)
     @JoinColumn({name: 'usuario_id'})
     usuario: Usuario;
+
+    @OneToMany(() => Orden, (orden)=>orden.afiliado)
+    orden: Orden[];
+      
   }
