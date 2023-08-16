@@ -1,7 +1,13 @@
 import { DataSource } from "typeorm";
-import { Usuario } from "./entities/Usuario";
+import { User } from "./entities/User";
 
 import { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_DATABASE } from "./config";
+import { Rol } from "./entities/Rol";
+import { Orden } from "./entities/Orden";
+import { Afiliado } from "./entities/Afiliado";
+import { Domicilio } from "./entities/Domicilio";
+import { Comercio } from "./entities/Comercio";
+import { Cuota } from "./entities/Cuota";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -12,5 +18,5 @@ export const AppDataSource = new DataSource({
   database: DB_DATABASE,
   // logging: true, // muestra peticiones a la bd
   synchronize: true,
-  entities: [Usuario],
+  entities: [User, Rol, Orden, Afiliado, Domicilio, Comercio, Cuota ],
 });
