@@ -1,16 +1,18 @@
 import {Entity,Column, PrimaryGeneratedColumn,BaseEntity,CreateDateColumn,UpdateDateColumn, OneToOne, JoinColumn, OneToMany} from "typeorm";
-import { Usuario } from "./Usuario";
+import { User } from "./User";
   
   @Entity() 
 
   export class Rol extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id: number;
+    id_rol: number;
 
     @Column()
-    nombre_rol: string;
+    name_rol: string;
 
-    @OneToOne(()=>Usuario, (usuario)=>usuario.rol)
-    usuario:Usuario;
-   
+    /*@OneToOne(()=>User, (user)=>user.rol)
+    user:User;*/
+    @OneToMany(()=>User, (user)=>user.rol)
+    user:User;
+
   }
