@@ -1,6 +1,6 @@
 import {Entity,Column, PrimaryGeneratedColumn,BaseEntity,CreateDateColumn,UpdateDateColumn, OneToOne, JoinColumn, OneToMany} from "typeorm";
 import { Domicilio } from "./Domicilio";
-import { Usuario } from "./Usuario";
+import { User } from "./User";
 import { Orden } from "./Orden";
   
   @Entity() 
