@@ -18,7 +18,6 @@ router.get("/users/:id", getUser);
 router.post("/users/signup", createUser);
 router.delete("/users/:id", deleteUser);
 router.put("/users/:id", updateUser);
-router.delete("/users/:id", deleteUser);
 router.post('/users/signin', signIn);
 router.post('/token', refresh);
 
