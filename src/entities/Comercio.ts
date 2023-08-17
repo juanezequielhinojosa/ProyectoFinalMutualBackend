@@ -7,16 +7,16 @@ import { Orden } from "./Orden";
 
   export class Comercio extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id: number;
+    id_comercio: number;
 
     @Column()
-    nombre: string;
+    name: string;
 
     @Column()
-    telefono: number
+    cuit: number
 
     @Column()
-    cuit: number;
+    phone: number;
   
     @Column({ default: true })
     active: boolean;
@@ -28,7 +28,7 @@ import { Orden } from "./Orden";
     updatedAt: Date;
 
     @OneToOne(()=>Domicilio)
-    @JoinColumn({name: 'domicilio_id'})
+    @JoinColumn({name: 'id_domicilio'})
     domicilio: Domicilio;
 
     @OneToMany(() => Orden, (orden)=>orden.comercio)
