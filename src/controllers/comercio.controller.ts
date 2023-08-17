@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Comercio } from "../entities/Comercio";
 import { Domicilio } from "../entities/Domicilio";
-import { Console } from "console";
+
 
 //OBTIENE TODOS LOS COMERCIOS
 export const getComercios = async (req: Request, res: Response) => {
