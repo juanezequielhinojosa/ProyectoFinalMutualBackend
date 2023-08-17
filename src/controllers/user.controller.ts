@@ -83,7 +83,7 @@ export const getUser = async (req: Request, res: Response) => {
 export const createUser = async (req: Request, res: Response) => {
   console.log('creando usuario')
   try {
-    const { username, password} = req.body;
+    const { username, password } = req.body;
     if (!username || !password) {
     return res.status(400).json({ msg: "Please. Send your username and password" });
     }
