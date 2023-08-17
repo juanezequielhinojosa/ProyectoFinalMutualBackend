@@ -6,7 +6,7 @@ import { Comercio } from "./Comercio";
 
   export class Domicilio extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id: number;
+    id_domicilio: number;
 
     @Column()
     barrio: string;
