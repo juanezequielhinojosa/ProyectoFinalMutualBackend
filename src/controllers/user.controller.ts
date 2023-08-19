@@ -83,7 +83,7 @@ export const getUser = async (req: Request, res: Response) => {
 export const createUser = async (req: Request, res: Response) => {
   console.log('creando usuario')
   try {
-    const { username, password} = req.body;
+    const { username, password, rol} = req.body;
     if (!username || !password) {
     return res.status(400).json({ msg: "Please. Send your username and password" });
     }
@@ -94,6 +94,7 @@ export const createUser = async (req: Request, res: Response) => {
     const user = new User();
     user.username = username;
     user.password = await createHash(req.body.password);
+    user.rol = rol
     await user.save();
     return res.status(201).json({ msg: "User created successfully" });
   } catch (error) {
@@ -170,7 +171,7 @@ export const signIn = async (req: Request, res: Response): Promise<Response> => 
        relations: [ 'rol' ]
       });
   if (!user) {
-    return res.status(400).json({ msg: "The User does not exists" });
+    return res.status(401).json({ msg: "The User does not exists" });
   }
 
   const isMatch = await comparePassword(user, req.body.password);
@@ -178,10 +179,10 @@ export const signIn = async (req: Request, res: Response): Promise<Response> => 
     //const rol= user.rol.name_rol
     //return res.status(400).json({ user,credentials: createToken(user) });
     //return res.status(400).json({ rol,credentials: createToken(user) });
-    return res.status(400).json({ credentials: createToken(user) });
+    return res.status(200).json({ credentials: createToken(user) });
   }
 
-  return res.status(400).json({
+  return res.status(401).json({
     msg: "The username or password are incorrect"
   });
 };
