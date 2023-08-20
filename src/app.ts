@@ -2,6 +2,7 @@ import express from 'express'
 import morgan from 'morgan';
 import cors from 'cors';
 import userRoutes from "./routes/user.router";
+import comercioRoutes from "./routes/comercio.routes"
 import passportMiddleware from './middlewares/passport';
 import passport from 'passport'
 import passportLocal from "passport-local";
@@ -16,6 +17,7 @@ app.use(passport.initialize());
 passport.use(passportMiddleware);
 //rutas
 app.use("/api", userRoutes);
+app.use("/api", comercioRoutes);
 
 
 export default app;
