@@ -7,25 +7,25 @@ import { Orden } from "./Orden";
 
   export class Afiliado extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id: number;
+    id_afiliado: number;
 
     @Column()
-    nombre: string;
+    name: string;
   
     @Column()
-    apellido: string;
+    lastname: string;
 
     @Column()
     dni: number;
 
     @Column()
-    fecha_nacimiento: Date;
+    birthdate: Date;
 
     @Column()
-    telefono: number;
+    phone: number;
 
     @Column()
-    correo: string;
+    mail: string;
 
     @Column()
     cuil: number;
@@ -42,15 +42,15 @@ import { Orden } from "./Orden";
     @UpdateDateColumn()
     updatedAt: Date;
 
-    @OneToOne(()=>Domicilio)
-    @JoinColumn({name: 'domicilio_id'})
-    domicilio: Domicilio;
-
     @OneToOne(()=>User)
-    @JoinColumn({name: 'user_id'})
+    @JoinColumn({name: 'id_user'})
     user: User;
 
-    @OneToMany(() => Orden, (orden)=>orden.afiliado)
-    orden: Orden[];
+    /*@OneToMany(() => Orden, (orden)=>orden.afiliado)
+    orden: Orden[];*/
+
+    /*@OneToOne(()=>Domicilio)
+    @JoinColumn({name: 'domicilio_id'})
+    domicilio: Domicilio;*/
       
   }
