@@ -12,11 +12,11 @@ const router = Router();
 
 /* El código está definiendo varias rutas para manejar operaciones relacionadas con el usuario en un
 Aplicación Express.js. Aquí hay un desglose de lo que hace cada ruta: */
-router.get("/comercios", getAfiliados);
-router.get("/comercios/:id", getAfiliado);
-router.post("/comercios", createAfiliado);
-router.delete("/comercios/:id", deleteAfiliado);
-router.put("/comercios/:id", updateAfiliado);
+router.get("/afiliados", getAfiliados);
+router.get("/afiliados/:id", getAfiliado);
+router.post("/afiliados", createAfiliado);
+router.delete("/afiliados/:id", deleteAfiliado);
+router.put("/afiliados/:id", updateAfiliado);
 
 
 
