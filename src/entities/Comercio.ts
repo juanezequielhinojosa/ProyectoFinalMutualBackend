@@ -13,12 +13,27 @@ import { Orden } from "./Orden";
     name: string;
 
     @Column()
-    cuit: number
+    cuit: number;
 
     @Column()
     phone: number;
+
+    @Column()
+    barrio: string;
   
-    @Column({ default: true })
+    @Column()
+    calle: string;
+
+    @Column()
+    numero: number;
+
+    @Column()
+    nro_depto: string;
+
+    @Column()
+    localidad: string;
+
+     @Column({ default: true })
     active: boolean;
   
     @CreateDateColumn()
@@ -27,11 +42,17 @@ import { Orden } from "./Orden";
     @UpdateDateColumn()
     updatedAt: Date;
 
-    @OneToOne(()=>Domicilio)
-    @JoinColumn({name: 'id_domicilio'})
-    domicilio: Domicilio;
+     /*@OneToMany(() => Orden, (orden)=>orden.comercio)
+    orden: Orden[];*/
 
-    @OneToMany(() => Orden, (orden)=>orden.comercio)
-    orden: Orden[];
+  ////////////////////////////////////////
+   //Codigo de prueba de relacion uno a uno
+   /*@OneToOne(() => Domicilio, (domicilio) => domicilio.comercio, {eager: true})
+   domicilio: Domicilio;*/
+
+   /* @OneToOne(() => Domicilio, (domicilio) => domicilio.comercio, { onDelete: "CASCADE", onUpdate: "CASCADE" })
+   @JoinColumn({name:'domicilio_id'})
+   domicilio : Domicilio;*/
+  /////////////////////////////////////////
 
   }
