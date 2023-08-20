@@ -6,7 +6,7 @@ import { Comercio } from "./Comercio";
 
   export class Domicilio extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id_domicilio: number;
+    domicilio_id: number;
 
     @Column()
     barrio: string;
@@ -23,10 +23,12 @@ import { Comercio } from "./Comercio";
     @Column()
     localidad: string;
 
-    @OneToOne(()=>Afiliado, (afiliado)=>afiliado.domicilio)
-    afiliado: Afiliado;
+  //Codigo de prueba de relacion uno a uno 
+   /* @OneToOne(() => Comercio, (comercio) => comercio.domicilio, { onDelete: "CASCADE", onUpdate: "CASCADE" })
+    @JoinColumn({name:'comercio'})
+    comercio: Comercio;*/
 
-    @OneToOne(()=>Comercio, (comercio)=>comercio.domicilio)
-    comercio: Comercio;
-   
+   /*@OneToOne(() => Comercio, (comercio) => comercio.domicilio, {eager: true})
+   comercio: Comercio;*/
+
   }
