@@ -32,7 +32,7 @@ export class Orden extends BaseEntity {
   afiliado: Afiliado;
 
   @ManyToOne(() => Comercio)
-  @JoinColumn({name:'comercio_id'})
+  @JoinColumn({name:'id_comercio'})
   comercio: Comercio;
 
   @OneToMany(() => Cuota, (cuota)=>cuota.orden)
