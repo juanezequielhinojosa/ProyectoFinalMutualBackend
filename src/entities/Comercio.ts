@@ -12,10 +12,10 @@ import { Orden } from "./Orden";
     @Column()
     name: string;
 
-    @Column()
+    @Column({type: 'numeric', precision: 12})
     cuit: number;
 
-    @Column()
+    @Column({type: 'numeric', precision: 16})
     phone: number;
 
     @Column()
@@ -24,7 +24,7 @@ import { Orden } from "./Orden";
     @Column()
     calle: string;
 
-    @Column()
+    @Column({type: 'numeric', precision: 6})
     numero: number;
 
     @Column()
