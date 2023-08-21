@@ -83,9 +83,9 @@ export const getUser = async (req: Request, res: Response) => {
 export const createUser = async (req: Request, res: Response) => {
   console.log('creando usuario')
   try {
-    const { username, password} = req.body;
-    if (!username || !password) {
-    return res.status(400).json({ msg: "Please. Send your username and password" });
+    const { username, password, rol} = req.body;
+    if (!username || !password ||!rol) {
+    return res.status(400).json({ msg: "Please. Send your username , password and rol" });
     }
     const verifieduser = await User.findOneBy({ username });
     if (verifieduser) {
@@ -117,10 +117,23 @@ export const updateUser = async (req: Request, res: Response) => {
   console.log('actualizando usuario')
   const { id } = req.params;
   try {
-    const user = await User.findOneBy({ id_user: parseInt(id) });
+    /*const user = await User.findOneBy({ id_user: parseInt(id) });
     if (!user) return res.status(404).json({ message: "Not user found" });
     await User.update({ id_user: parseInt(id) }, req.body);
+    return res.status(200).json({ message: "User updated successfully" });*/
+    const { username, password, rol} = req.body;
+    if (!username || !password ||!rol) {
+    return res.status(400).json({ msg: "Please. Send your username , password and rol" });
+    }
+    const verifieduser = await User.findOneBy({ username });
+    if (!verifieduser) return res.status(404).json({ message: "Not user found" });
+    const user = new User();
+    user.username = username;
+    user.password = await createHash(req.body.password);
+    user.rol = rol
+    await User.update({ id_user: parseInt(id) }, user);
     return res.status(200).json({ message: "User updated successfully" });
+    
   } catch (error) {
     if (error instanceof Error) {
       return res.status(500).json({ message: error.message });
