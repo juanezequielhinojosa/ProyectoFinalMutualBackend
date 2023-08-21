@@ -1,4 +1,4 @@
-import {Entity,Column, PrimaryGeneratedColumn,BaseEntity,CreateDateColumn,UpdateDateColumn, OneToOne, JoinColumn, OneToMany} from "typeorm";
+import {Entity,Column, PrimaryGeneratedColumn,BaseEntity,CreateDateColumn,UpdateDateColumn, OneToOne, JoinColumn, OneToMany, Long} from "typeorm";
 import { Domicilio } from "./Domicilio";
 import { User } from "./User";
 import { Orden } from "./Orden";
@@ -16,19 +16,19 @@ import { Orden } from "./Orden";
     lastname: string;
 
     @Column()
-    dni: number;
-
-    @Column()
     birthdate: Date;
 
-    @Column()
+    @Column({type: 'numeric', precision: 8})
+    dni: number;
+
+    @Column({type: 'numeric', precision: 12})
+    cuil: number;
+
+    @Column({type: 'numeric', precision: 16})
     phone: number;
 
     @Column()
     mail: string;
-
-    @Column()
-    cuil: number;
 
     @Column({ type: 'float' })
     saldo: number;
