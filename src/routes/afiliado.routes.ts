@@ -15,8 +15,9 @@ Aplicación Express.js. Aquí hay un desglose de lo que hace cada ruta: */
 router.get("/afiliados", getAfiliados);
 router.get("/afiliados/:id", getAfiliado);
 router.post("/afiliados", createAfiliado);
-router.delete("/afiliados/:id", deleteAfiliado);
 router.put("/afiliados/:id", updateAfiliado);
+router.delete("/afiliados/:id", deleteAfiliado);
+
 
 
 
