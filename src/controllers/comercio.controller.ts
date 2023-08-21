@@ -68,7 +68,7 @@ export const createComercio = async (req: Request, res: Response) => {
     }
     const verifiedComercio = await Comercio.findOneBy({ cuit });
     if (verifiedComercio) {
-      return res.status(400).json({ msg: "The Comercio already Exists" });
+      return res.status(400).json({ msg: "The Trade already Exists" });
     }
     /*const domicilioComercio = new Domicilio()
     domicilioComercio.barrio = domicilio.barrio;
@@ -89,7 +89,7 @@ export const createComercio = async (req: Request, res: Response) => {
     comercio.localidad = localidad;
     await comercio.save();
     //return res.status(201).json(comercio);
-    return res.status(201).json({ msg: "Comercio created successfully" });
+    return res.status(201).json({ msg: "Trade created successfully" });
   } catch (error) {
     if (error instanceof Error) {
       return res.status(500).json({ message: error.message });
@@ -116,10 +116,10 @@ export const updateComercio = async (req: Request, res: Response) => {
       where: { id_comercio: parseInt(id)},
       relations: ['domicilio']
     })*/
-    if (!comercio) return res.status(404).json({ message: "Not comercio found" });
+    if (!comercio) return res.status(404).json({ message: "Not trade found" });
     await Comercio.update({ id_comercio: parseInt(id) },req.body);
     //return res.sendStatus(204);
-    return res.status(200).json({ message: "Comercio updated successfully" });
+    return res.status(200).json({ message: "Trade updated successfully" });
   } catch (error) {
     if (error instanceof Error) {
       return res.status(500).json({ message: error.message });
@@ -141,9 +141,9 @@ export const deleteComercio = async (req: Request, res: Response) => {
   try {
     const result = await Comercio.delete({ id_comercio: parseInt(id) });
     if (result.affected === 0){
-       return res.status(404).json({ message: "Comercio not found" });
+       return res.status(404).json({ message: "Trade not found" });
     }
-    return res.status(200).json({ message: "Comercio removed successfully" });
+    return res.status(200).json({ message: "Trade removed successfully" });
   } catch (error) {
     if (error instanceof Error) {
       return res.status(500).json({ message: error.message });
