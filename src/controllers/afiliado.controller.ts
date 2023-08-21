@@ -13,12 +13,12 @@ import { Domicilio } from "../entities/Domicilio";
 export const getAfiliados = async (req: Request, res: Response) => {
   console.log('obteniendo afiliados...');
   try {
-    const afiliados = await Afiliado.find();
-    /*const afiliados = await Afiliado.find({
+    //const afiliados = await Afiliado.find();
+    const afiliados = await Afiliado.find({
     relations: {
         user : true
     },
-    });*/
+    });
     return res.status(200).json(afiliados);
   } catch (error) {
     if (error instanceof Error) {
@@ -37,11 +37,11 @@ export const getAfiliado = async (req: Request, res: Response) => {
   console.log('buscando afiliado...');
   try {
     const { id } = req.params;
-    const afiliado = await Afiliado.findOneBy({ id_afiliado: parseInt(id) });
-    /*const afiliado = await Afiliado.findOne({
+    //const afiliado = await Afiliado.findOneBy({ id_afiliado: parseInt(id) });
+    const afiliado = await Afiliado.findOne({
       where: { id_afiliado: parseInt(id)},
       relations: ['user']
-    })*/
+    })
     if (!afiliado) return res.status(400).json({ message: "affiliate not found" });
     return res.status(200).json(afiliado);
   } catch (error) {
@@ -60,10 +60,10 @@ export const getAfiliado = async (req: Request, res: Response) => {
  */
 export const createAfiliado = async (req: Request, res: Response) => {
   console.log('creando afiliado...')
-  console.log(req.body)
+  //console.log(req.body)
   try {
-    const { name, lastname,  birthdate, phone, mail, cuil, saldo, user } = req.body;
-    if (!name || !lastname || !birthdate || !phone || !mail || !cuil || !saldo || !user) {
+    const { name, lastname, dni, cuil, birthdate, phone, mail, saldo } = req.body;
+    if (!name || !lastname ||!dni ||!cuil || !birthdate || !phone || !mail || !saldo ) {
       return res.status(400).json({ msg: "Please. All fields are required" });
     }
     const verifiedAfiliado = await Afiliado.findOneBy({ cuil });
@@ -81,12 +81,13 @@ export const createAfiliado = async (req: Request, res: Response) => {
     const afiliado = new Afiliado();
     afiliado.name = name;
     afiliado.lastname = lastname;
+    afiliado.dni = dni;
+    afiliado.cuil = cuil;
     afiliado.birthdate = birthdate;
     afiliado.phone = phone;
     afiliado.mail = mail;
-    afiliado.cuil = cuil;
     afiliado.saldo = saldo;
-    afiliado.user = user;
+    //afiliado.user = user;
     await afiliado.save();
     //return res.status(201).json(afiliado);
     return res.status(201).json({ msg: "Affiliate created successfully" });
