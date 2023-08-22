@@ -63,7 +63,7 @@ export const createComercio = async (req: Request, res: Response) => {
   console.log(req.body)
   try {
     const { name, cuit, phone, barrio, calle, numero, nro_depto, localidad } = req.body;
-    if (!name || !cuit || !phone || !barrio || !calle || !numero || !nro_depto || !localidad) {
+    if (!name || !cuit || !phone || !barrio || !calle || !numero || !localidad) {
       return res.status(400).json({ msg: "Please. All fields are required" });
     }
     const verifiedComercio = await Comercio.findOneBy({ cuit });

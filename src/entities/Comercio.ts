@@ -33,7 +33,7 @@ import { Orden } from "./Orden";
     @Column()
     localidad: string;
 
-     @Column({ default: true })
+    @Column({ default: true })
     active: boolean;
   
     @CreateDateColumn()
