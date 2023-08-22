@@ -2,6 +2,7 @@ import {Entity,Column, PrimaryGeneratedColumn,BaseEntity,CreateDateColumn,Update
 import { Domicilio } from "./Domicilio";
 import { User } from "./User";
 import { Orden } from "./Orden";
+import { text } from "stream/consumers";
   
   @Entity() 
 
@@ -32,6 +33,21 @@ import { Orden } from "./Orden";
 
     @Column({ type: 'float' })
     saldo: number;
+
+    @Column()
+    barrio: string;
+  
+    @Column()
+    calle: string;
+
+    @Column({type: 'numeric', precision: 6})
+    numero: number;
+
+    @Column({type: 'text', nullable: true})
+    nro_depto: string;
+
+    @Column()
+    localidad: string;
   
     @Column({ default: true })
     active: boolean;

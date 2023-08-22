@@ -62,8 +62,8 @@ export const createAfiliado = async (req: Request, res: Response) => {
   console.log('creando afiliado...')
   //console.log(req.body)
   try {
-    const { name, lastname, dni, cuil, birthdate, phone, mail, saldo } = req.body;
-    if (!name || !lastname ||!dni ||!cuil || !birthdate || !phone || !mail || !saldo ) {
+    const { name, lastname, dni, cuil, birthdate, phone, mail, saldo, barrio, calle, numero, nro_depto, localidad  } = req.body;
+    if (!name || !lastname ||!dni ||!cuil || !birthdate || !phone || !mail || !saldo|| !barrio || !calle || !numero || !localidad ) {
       return res.status(400).json({ msg: "Please. All fields are required" });
     }
     const verifiedAfiliado = await Afiliado.findOneBy({ cuil });
@@ -87,6 +87,11 @@ export const createAfiliado = async (req: Request, res: Response) => {
     afiliado.phone = phone;
     afiliado.mail = mail;
     afiliado.saldo = saldo;
+    afiliado.barrio = barrio;
+    afiliado.calle = calle;
+    afiliado.numero = numero;
+    afiliado.nro_depto = nro_depto;
+    afiliado.localidad = localidad;
     //afiliado.user = user;
     await afiliado.save();
     //return res.status(201).json(afiliado);

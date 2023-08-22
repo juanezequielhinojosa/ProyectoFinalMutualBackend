@@ -27,7 +27,7 @@ import { Orden } from "./Orden";
     @Column({type: 'numeric', precision: 6})
     numero: number;
 
-    @Column()
+    @Column({type: 'text', nullable: true})
     nro_depto: string;
 
     @Column()
