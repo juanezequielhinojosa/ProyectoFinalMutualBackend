@@ -122,10 +122,10 @@ export const updateUser = async (req: Request, res: Response) => {
     await User.update({ id_user: parseInt(id) }, req.body);
     return res.status(200).json({ message: "User updated successfully" });*/
     const { username, password, rol} = req.body;
-    if (!username || !password ||!rol) {
+    if (!username || !password || !rol) {
     return res.status(400).json({ msg: "Please. Send your username , password and rol" });
     }
-    const verifieduser = await User.findOneBy({ username });
+    const verifieduser = await User.findOneBy({ id_user: parseInt(id) });
     if (!verifieduser) return res.status(404).json({ message: "Not user found" });
     const user = new User();
     user.username = username;
@@ -156,7 +156,7 @@ export const deleteUser = async (req: Request, res: Response) => {
     const result = await User.delete({ id_user: parseInt(id) });
     if (result.affected === 0)
       return res.status(404).json({ message: "User not found" });
-    return res.status(200).json({ message: "User eliminado" });
+    return res.status(200).json({ message: "User deleted" });
   } catch (error) {
     if (error instanceof Error) {
       return res.status(500).json({ message: error.message });
