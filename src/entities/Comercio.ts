@@ -42,8 +42,8 @@ import { Orden } from "./Orden";
     @UpdateDateColumn()
     updatedAt: Date;
 
-     /*@OneToMany(() => Orden, (orden)=>orden.comercio)
-    orden: Orden[];*/
+    @OneToMany(() => Orden, (orden)=>orden.comercio)
+    orden: Orden[];
 
   ////////////////////////////////////////
    //Codigo de prueba de relacion uno a uno

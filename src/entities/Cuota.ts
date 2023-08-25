@@ -4,7 +4,8 @@ import { Entity,
   CreateDateColumn, 
   ManyToOne, 
   BaseEntity, 
-  Column} from "typeorm"
+  Column,
+  Collection} from "typeorm"
 import { Orden } from "./Orden";
 
 @Entity()
@@ -13,7 +14,7 @@ export class Cuota extends BaseEntity {
   id: number;
 
   @Column({ type: 'date' })
-  fecha_vencimiento: string;
+  fecha_vencimiento: Date;
 
   @Column({ type: 'float' })
   monto: number;
@@ -21,7 +22,7 @@ export class Cuota extends BaseEntity {
   @Column({ default: false })
   estado_pagado: boolean;
 
-  @ManyToOne(() => Orden)
-  @JoinColumn({name:'orden_id'})
+  @ManyToOne(() => Orden,(orden)=>orden.cuota)
+  //@JoinColumn({name:'orden_id'})
   orden: Orden;
 }

@@ -62,8 +62,8 @@ import { text } from "stream/consumers";
     @JoinColumn({name: 'id_user'})
     user: User;
 
-    /*@OneToMany(() => Orden, (orden)=>orden.afiliado)
-    orden: Orden[];*/
+    @OneToMany(() => Orden, (orden)=>orden.afiliado)
+    orden: Orden[];
 
     /*@OneToOne(()=>Domicilio)
     @JoinColumn({name: 'domicilio_id'})

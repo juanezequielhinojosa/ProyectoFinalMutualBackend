@@ -13,13 +13,19 @@ import { Cuota } from "./Cuota";
 @Entity()
 export class Orden extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  id_orden: number;
 
-  @Column()
-  nro_orden: number;
+ /* @Column()
+  nro_orden: number;*/
 
   @Column({ type: 'float' })
   monto_credito: number;
+
+  @Column({ type: 'float' })
+  interes: number;
+
+  /*@Column()
+  cantidad_cuotas:number;*/
   
   @Column({ default: false })
   estado_pagado: boolean;
@@ -27,8 +33,14 @@ export class Orden extends BaseEntity {
   @CreateDateColumn()
   fecha_solicitud: Date;
 
+  /*@Column()
+  fecha_vencimiento: Date;*/
+
+  @Column({type: 'date', nullable: true})
+  fecha_pago: Date;
+
   @ManyToOne(() => Afiliado)
-  @JoinColumn({name:'afiliado_id'})
+  @JoinColumn({name:'id_afiliado'})
   afiliado: Afiliado;
 
   @ManyToOne(() => Comercio)
@@ -36,5 +48,6 @@ export class Orden extends BaseEntity {
   comercio: Comercio;
 
   @OneToMany(() => Cuota, (cuota)=>cuota.orden)
-  cuota: Cuota[];
+  cuota: Cuota [];
+  
 }
