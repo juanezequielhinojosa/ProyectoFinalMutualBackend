@@ -5,6 +5,7 @@ import userRoutes from "./routes/user.router";
 import comercioRoutes from "./routes/comercio.routes"
 import afiliadoRoutes from "./routes/afiliado.routes"
 import ordenesRoutes from "./routes/orden.routes"
+import cuotasRoutes from "./routes/cuota.router"
 import passportMiddleware from './middlewares/passport';
 import passport from 'passport'
 import passportLocal from "passport-local";
@@ -21,7 +22,8 @@ passport.use(passportMiddleware);
 app.use("/api", userRoutes);
 app.use("/api", comercioRoutes);
 app.use("/api", afiliadoRoutes);
-app.use("/api", ordenesRoutes)
+app.use("/api", ordenesRoutes);
+app.use("/api",cuotasRoutes)
 
 
 export default app;
