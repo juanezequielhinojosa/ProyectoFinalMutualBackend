@@ -5,6 +5,7 @@ import {
   createOrden,
   pagarOrden,
   deleteOrden,
+  getOrdenesByAfiliado,
 } from "../controllers/orden.controller";
 import passport from 'passport'
 
@@ -17,5 +18,6 @@ router.get("/ordenes/:id", getOrden);
 router.post("/ordenes", createOrden);
 router.put("/ordenes/:id", pagarOrden);
 router.delete("/ordenes/:id", deleteOrden);
+router.get("/ordenes/afiliado/:id", getOrdenesByAfiliado);
 
 export default router;

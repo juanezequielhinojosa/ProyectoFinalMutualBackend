@@ -156,3 +156,20 @@ export const deleteOrden = async (req: Request, res: Response) => {
   }
   
 };
+
+export const getOrdenesByAfiliado = async (req: Request, res: Response) => {
+  console.log('obteniendo una orden...');
+  try {
+    const { id } = req.params;
+    const ordenes = await Orden.find({
+      where: { afiliado: {id_afiliado: parseInt(id)}},
+       relations: [ 'afiliado','comercio','cuota' ]
+      });
+    if (!ordenes) return res.status(404).json({ message: "Ordenes not found" });
+    return res.status(200).json(ordenes);
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(500).json({ message: error.message });
+    }
+  }
+};
