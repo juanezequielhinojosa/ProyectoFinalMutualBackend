@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Cuota } from "../entities/Cuota";
+import { Orden } from "../entities/Orden";
 
 //OBTIENE TODOS LAS CUOTAS
 /**
@@ -119,3 +120,26 @@ export const deleteCuota = async (req: Request, res: Response) => {
     }
   }
 };
+
+export const getCuotasByAfiliadoId = async (req: Request, res: Response) => {
+  console.log('obteniendo cuotas por id de afiliado...')
+  const { id } = req.params
+
+  try {
+    const cuota = await Cuota.find({
+      where: { orden: { afiliado: { id_afiliado: parseInt(id)} } },
+      relations: {
+        orden: {
+          comercio: true,
+          afiliado: true
+        }
+      }
+      });
+    if (!cuota) return res.status(404).json({ message: "Cuota not found" });
+    return res.status(200).json(cuota);
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(500).json({ message: error.message });
+    }
+  }
+}

@@ -3,7 +3,8 @@ import {
   getCuotas,
   getCuota,
   pagarCuota,
-  deleteCuota
+  deleteCuota,
+  getCuotasByAfiliadoId
  //createCuota,
  //updateCuota
 
@@ -20,5 +21,7 @@ router.put("/cuotas/:id", pagarCuota);
 router.delete("/cuotas/:id", deleteCuota);
 //router.post("/cuotas", createCuota);
 //router.put("/cuotas/:id", updateCuota);
+
+router.get("/cuotas/afiliado/:id", getCuotasByAfiliadoId);
 
 export default router;
