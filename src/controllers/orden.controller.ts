@@ -76,7 +76,9 @@ export const createOrden = async (req: Request, res: Response) => {
     const arrayCuotas : Cuota [] = []
     console.log(afiliadoAvailable?.saldo)
     let saldoDisponible = afiliadoAvailable?.saldo || 0
-    if(saldoDisponible < parseFloat(monto_credito))res.status(200).json({ message: "insufficient balance to approve order" })
+    if(saldoDisponible < parseFloat(monto_credito)) return res.status(200).json({ message: "insufficient balance to approve order" })
+    afiliadoAvailable.saldo=(saldoDisponible - monto_credito)
+    await Afiliado.update({ id_afiliado: parseInt(id_afiliado) },afiliadoAvailable);
     for (let index = 0; index < cuota.length; index++) {
       const element = cuota[index];
       const cuotaElement = new Cuota();
