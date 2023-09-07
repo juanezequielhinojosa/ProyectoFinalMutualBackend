@@ -63,7 +63,7 @@ export const pagarCuota = async (req: Request, res: Response) => {
     const cuota = await Cuota.findOneBy({ id_cuota: parseInt(id) });
     if (!cuota) return res.status(404).json({ message: "Not cuota found" });
     cuota.estado_pagado = true;
-    //cuota.fecha_pago = fecha_pago;
+    cuota.fecha_pago = fecha_pago;
     await Cuota.update({ id_cuota: parseInt(id) }, cuota);
     return res.status(200).json({ message: "Cuota paid successfully" });
   } catch (error) {

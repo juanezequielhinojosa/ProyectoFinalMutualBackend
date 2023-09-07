@@ -22,6 +22,9 @@ export class Cuota extends BaseEntity {
 
   @Column({ type: 'float' })
   monto: number;
+
+  @Column({type: 'date', nullable: true})
+  fecha_pago: Date;
   
   @Column({ default: false })
   estado_pagado: boolean;
