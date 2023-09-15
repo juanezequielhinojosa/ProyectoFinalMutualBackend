@@ -124,6 +124,25 @@ export const getMontoByComercio = async (req: Request, res: Response) => {
   }
 };
 
+//OBTIENE MONTO TOTAL A PAGAR AL COMERCIO POR MES
+export const getOrdenesByComercio = async (req: Request, res: Response) => {
+  console.log('obteniendo ordenes de un comercio...');
+  try {
+    const { id } = req.params;
+    const ordenes = await Orden.find({
+      where: { comercio: {id_comercio: parseInt(id)}},
+       relations: [ 'comercio' ]
+      });
+    if (!ordenes) return res.status(404).json({ message: "No hay Ordenes para este Comercio" });
+    
+    return res.status(200).json(ordenes);
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(500).json({ message: error.message });
+    }
+  }
+};
+
 
 
 //CREA UN COMERCIO
