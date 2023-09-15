@@ -121,6 +121,12 @@ export const deleteCuota = async (req: Request, res: Response) => {
   }
 };
 
+//OBTIENE TODAS LAS CUOTAS DE UN AFILIADO
+/**
+ * Esta función de TypeScript recupera cuotas (cuotas) por ID de afiliado.
+ * @devuelve un objeto de respuesta con los datos de la cuota si se encuentra, o un mensaje de error si hay una
+ * error.
+ */
 export const getCuotasByAfiliadoId = async (req: Request, res: Response) => {
   console.log('obteniendo cuotas por id de afiliado...')
   const { id } = req.params
