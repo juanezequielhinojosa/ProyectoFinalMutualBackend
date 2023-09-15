@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Comercio } from "../entities/Comercio";
 import { Domicilio } from "../entities/Domicilio";
+import { Orden } from "../entities/Orden";
 
 
 //OBTIENE TODOS LOS COMERCIOS
@@ -50,6 +51,80 @@ export const getComercio = async (req: Request, res: Response) => {
     }
   }
 };
+
+//OBTIENE MONTO TOTAL A PAGAR A LOS COMERCIOS POR MES
+/**
+ * Esta función de TypeScript recupera el monto total a pagar a un comercio por mes.
+ * @devuelve una respuesta JSON con la lista de comercios y su total correspondiente
+ * monto del pago para el mes actual.
+ */
+export const getListPayByComercio = async (req: Request, res: Response) => {
+  console.log('obteniendo monto total por mes a pagar a los comercios...');
+  
+  try {
+    let listaPagarComercios = []
+    const comerciosDisponibles = await Comercio.find()
+    for (let index = 0; index < comerciosDisponibles.length; index++) {
+      const comercio = comerciosDisponibles[index];
+      const ordenes = await Orden.find({
+      where: { comercio: {id_comercio: comercio.id_comercio}},
+       relations: [ 'comercio' ]
+      });
+      let montoPago = 0;
+      const date = new Date()
+      const mesActual = date.getMonth()+1
+      
+      for (let index = 0; index < ordenes.length; index++) {
+        let element = ordenes[index];
+        if(mesActual == element.fecha_solicitud.getMonth()+1){
+          montoPago += element.monto_credito
+        }
+      } 
+      let PagarComercio = {
+        id_comercio : comercio.id_comercio,
+        name : comercio.name,
+        total : montoPago
+      }
+      listaPagarComercios.push(PagarComercio)
+
+    }
+    return res.status(200).json(listaPagarComercios);
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(500).json({ message: error.message });
+    }
+  }
+};
+
+//OBTIENE MONTO TOTAL A PAGAR AL COMERCIO POR MES
+export const getMontoByComercio = async (req: Request, res: Response) => {
+  console.log('obteniendo monto total por mes a pagar a un comercio...');
+  try {
+    const { id } = req.params;
+    const ordenes = await Orden.find({
+      where: { comercio: {id_comercio: parseInt(id)}},
+       relations: [ 'comercio' ]
+      });
+    if (!ordenes) return res.status(404).json({ message: "No hay Ordenes para este Comercio" });
+    let montoPago = 0;
+    const date = new Date()
+    const mesActual = date.getMonth()+1
+    console.log(date.getMonth()+1)
+    for (let index = 0; index < ordenes.length; index++) {
+      let element = ordenes[index];
+      if(mesActual == element.fecha_solicitud.getMonth()+1){
+        montoPago += element.monto_credito
+      }
+    }
+    return res.status(200).json(montoPago);
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(500).json({ message: error.message });
+    }
+  }
+};
+
+
 
 //CREA UN COMERCIO
 /**
