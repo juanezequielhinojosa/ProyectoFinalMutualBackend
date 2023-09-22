@@ -3,9 +3,9 @@
 :package: **Módulo 6: Servidor Web Mutual (Api)**
 
 ## Integrantes del grupo 6:
-Carlos Norberto Vilca
-Brenda Noelia Veramendi
-Gustavo Alberto Ordoñez
+Carlos Norberto Vilca, 
+Brenda Noelia Veramendi,
+Gustavo Alberto Ordoñez,
 Juan Ezequiel Hinojosa
 
 ## Introducción
@@ -13,9 +13,9 @@ Este proyecto consiste en el desarrollo de un servidor web que logra dar soluci�
 En el desarrollo del servidor web utilizamos las siguientes tecnologías :
 Node.js, Type-scripts, MySql
 El sistema cuantas con distintos endpoints que permiten las siguientes acciones:
-Gestión de Afiliados.
-Gestión de Comercios.
-Gestión de Ordenes.
+-Gestión de Afiliados.
+-Gestión de Comercios.
+-Gestión de Ordenes.
 
 A continuación una guía rápida para poner el proyecto en funcionamiento :clap:
 
@@ -38,5 +38,5 @@ Una vez clonado el repositorio deberás abrir una terminal en tu editor de códi
 ## Agradecimientos
 
 Este es el proyecto final con el que finalizamos el curso Full Satack Web Developer y donde aplicamos todo lo que hemos aprendido a lo largo de los distintos módulos. 
-Agradecemos profundamente la buena predispocicion de los profesores Jorge Mendoza , Facundo Llampa y Gonzalo Vallejos, que nos acompañaron a lo largo de todo el trayecto de formación.
+Agradecemos profundamente la buena predispocicion de los profesores Jorge Mendoza , Facundo Llampa y Gonzalo Vallejos, quienes nos acompañaron a lo largo de todo el trayecto de formación.
 Sin más que decir esperemos que el proyecto sea de su agrado. Saludos!!!  :smile:
