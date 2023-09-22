@@ -37,6 +37,6 @@ Una vez clonado el repositorio deberás abrir una terminal en tu editor de códi
 
 ## Agradecimientos
 
-Este es el proyecto final con el que finalizamos el curso Full Satack Web Developer y donde aplicamos todo lo que hemos aprendido a lo largo de los distintos módulos. 
+Este es el proyecto final con el que finalizamos el curso Full Stack Web Developer y donde aplicamos todo lo que hemos aprendido a lo largo de los distintos módulos. 
 Agradecemos profundamente la buena predispocicion de los profesores Jorge Mendoza , Facundo Llampa y Gonzalo Vallejos, quienes nos acompañaron a lo largo de todo el trayecto de formación.
 Sin más que decir esperemos que el proyecto sea de su agrado. Saludos!!!  :smile:
