@@ -1,4 +1,4 @@
-# Proyecto Final Modulo 6: Sistema Web Mutual :rocket: :rocket: :rocket:
+# Proyecto Final Modulo 6: Sistema Web Mutual :rocket: :rocket: :rocket
 
 :package: **Módulo 6: Servidor Web Mutual (Api)**
 
@@ -11,7 +11,7 @@ Juan Ezequiel Hinojosa
 ## Introducción
 Este proyecto consiste en el desarrollo de un servidor web que logra dar solución a una problemática que enfrenta una Mutual de San Salvador de Jujuy la cual busca implementar un sistema informático en sus oficinas y brindar un mejor servicio a sus Afiliados.
 En el desarrollo del servidor web utilizamos las siguientes tecnologías :
-Node.js, Type-scripts, MySql
+Node.js, Type-scripts, MySql.
 El sistema cuantas con distintos endpoints que permiten las siguientes acciones:
 - Gestión de Afiliados.
 - Gestión de Comercios.
