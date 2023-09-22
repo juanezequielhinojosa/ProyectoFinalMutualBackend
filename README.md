@@ -1,4 +1,4 @@
-# Proyecto Final Modulo 6: Sistema Web Mutual :rocket: :rocket: :rocket
+# Proyecto Final Modulo 6: Sistema Web Mutual :rocket: :rocket: :rocket:
 
 :package: **Módulo 6: Servidor Web Mutual (Api)**
 
