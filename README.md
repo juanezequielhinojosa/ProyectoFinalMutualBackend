@@ -6,7 +6,7 @@
 Carlos Norberto Vilca, 
 Brenda Noelia Veramendi,
 Gustavo Alberto Ordoñez,
-Juan Ezequiel Hinojosa
+Juan Ezequiel Hinojosa.
 
 ## Introducción
 Este proyecto consiste en el desarrollo de un servidor web que logra dar solución a una problemática que enfrenta una Mutual de San Salvador de Jujuy la cual busca implementar un sistema informático en sus oficinas y brindar un mejor servicio a sus Afiliados.
