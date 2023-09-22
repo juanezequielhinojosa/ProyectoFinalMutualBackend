@@ -13,9 +13,9 @@ Este proyecto consiste en el desarrollo de un servidor web que logra dar soluci�
 En el desarrollo del servidor web utilizamos las siguientes tecnologías :
 Node.js, Type-scripts, MySql
 El sistema cuantas con distintos endpoints que permiten las siguientes acciones:
--Gestión de Afiliados.
--Gestión de Comercios.
--Gestión de Ordenes.
+- Gestión de Afiliados.
+- Gestión de Comercios.
+- Gestión de Ordenes.
 
 A continuación una guía rápida para poner el proyecto en funcionamiento :clap:
 
